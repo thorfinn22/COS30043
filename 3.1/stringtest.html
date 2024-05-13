@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Test Web </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <!-- VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>String Test</h1>
+        <label>Please enter your name:</label>
+        <input type="text" v-model="strName" class="form-control">
+
+        <div v-if="strName.toLowerCase() === 'harry'">
+            <p class="alert alert-success">{{ response }}</p>
+        </div>
+        <div v-else>
+            <p class="alert alert-danger">{{ strName }} is not my name.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                strName: '',
+                response: ''
+            },
+            watch: {
+                strName: function(newName) {
+                    if (newName.toLowerCase() === 'harry') {
+                        this.response = 'Awesome name!';
+                    } else {
+                        this.response = newName + ' is not my name.';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
